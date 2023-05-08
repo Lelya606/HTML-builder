@@ -6,14 +6,14 @@ const readline = require('readline');
 const fileName = 'text.txt';
 const filePath = path.join(__dirname, fileName);
 
-const writableStream = fs.createWriteStream(filePath);
+const writeStream = fs.createWriteStream(filePath);
 const readLine = readline.createInterface({ input, output });
 
 console.log('Hello! Waiting for input...\n');
 
 function changeContent(input) {
   if (input.toString() !== 'exit') {
-    writableStream.write(`${input}\n`);
+    writeStream.write(`${input}\n`);
   } else {
     readLine.close();
   }
