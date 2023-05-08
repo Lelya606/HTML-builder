@@ -24,9 +24,9 @@ const htmlCopyFilePath = path.join(projectFolderPath, htmlCopyFileName);
 
 const charset = 'utf-8';
 
-const buildStyles = async(stylesPath, newStylesPath) => {
+const buildStyles = async (stylesPath, newStylesPath) => {
   const writeStream = fs.createWriteStream(newStylesPath);
-  const files = await fsPromises.readdir(stylesPath, { withFileTypes: true });
+  const files = await fsPromises.readdir(stylesPath, {withFileTypes: true});
 
   for (const file of files) {
     const sourceFilePath = path.join(stylesPath, file.name);
@@ -41,9 +41,9 @@ const buildStyles = async(stylesPath, newStylesPath) => {
 }
 
 const copyAssets = async (filePath, copyFilePath) => {
-  await fsPromises.rm(copyFilePath, { recursive: true, force: true });
-  await fsPromises.mkdir(copyFilePath, { recursive: true });
-  const files = await fsPromises.readdir(filePath, { withFileTypes: true });
+  await fsPromises.rm(copyFilePath, {recursive: true, force: true});
+  await fsPromises.mkdir(copyFilePath, {recursive: true});
+  const files = await fsPromises.readdir(filePath, {withFileTypes: true});
 
   for (let file of files) {
     const source = path.join(filePath, file.name);
@@ -61,7 +61,7 @@ const createHtml = async (htmlPath, htmlCopyPath, componentsPath) => {
   await fsPromises.copyFile(htmlPath, htmlCopyPath);
   let htmlFileContent = await fsPromises.readFile(htmlCopyPath, charset);
   const writeStream = fs.createWriteStream(htmlCopyPath);
-  const files = await fsPromises.readdir(componentsPath, { withFileTypes: true });
+  const files = await fsPromises.readdir(componentsPath, {withFileTypes: true});
 
   for (const file of files) {
     const sourceFilePath = path.join(componentsPath, file.name);
