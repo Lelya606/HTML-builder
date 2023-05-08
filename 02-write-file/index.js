@@ -12,7 +12,6 @@ const readLine = readline.createInterface({ input, output });
 console.log('Hello! Waiting for input...\n');
 
 function changeContent(input) {
-  console.log(input, 'input');
   if (input.toString() !== 'exit') {
     writableStream.write(`${input}\n`);
   } else {
