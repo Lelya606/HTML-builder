@@ -19,7 +19,6 @@ function changeContent(input) {
   }
 }
 
-readLine.on('line', changeContent);
-readLine.on('SIGINT', changeContent);
+readLine.on('line' || 'SIGINT', changeContent);
 readLine.on('close', () => console.log(`\nBye! The entered data is saved in a "${fileName}" file.`));
 readLine.on('error', (err) => console.log(`Error: ${err.message}`));
